@@ -14,7 +14,7 @@ module.exports = {
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild),
 
   async execute(interaction) {
-    const infoEmbed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(0x57f287)
       .setAuthor({ name: '⚡ Entrega Automática!' })
       .setTitle('Nitrada')
@@ -36,21 +36,13 @@ module.exports = {
       ].join('\n'))
       .setFooter({ text: 'VOID STORE' });
 
-    if (process.env.NITRADA_THUMB_URL) {
-      infoEmbed.setThumbnail(process.env.NITRADA_THUMB_URL);
-    }
-
-    const embeds = [];
-
     if (process.env.NITRADA_BANNER_URL) {
-      const bannerEmbed = new EmbedBuilder()
-        .setColor(0x57f287)
-        .setImage(process.env.NITRADA_BANNER_URL);
-
-      embeds.push(bannerEmbed);
+      embed.setImage(process.env.NITRADA_BANNER_URL);
     }
 
-    embeds.push(infoEmbed);
+    if (process.env.NITRADA_THUMB_URL) {
+      embed.setThumbnail(process.env.NITRADA_THUMB_URL);
+    }
 
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
@@ -61,7 +53,7 @@ module.exports = {
     );
 
     await interaction.reply({
-      embeds,
+      embeds: [embed],
       components: [row]
     });
   }
