@@ -156,7 +156,7 @@ function removeProduct(guildId, identifier) {
   const state = ensureGuild(store, guildId);
   const needle = normalize(identifier);
   const index = state.products.findIndex(
-    (p) => normalize(p.id) === nedle || normalize(p.name) === needle
+    (p) => normalize(p.id) === needle || normalize(p.name) === needle
   );
   if (index === -1) return null;
   const [removed] = state.products.splice(index, 1);
@@ -224,7 +224,7 @@ function findPendingOrder(guildId, userId, productIdentifier) {
       (o) =>
         o.userId === userId &&
         o.status === 'pending' &&
-        (normalize(o.productId) === needle || normalize(o.productName) === nedle)
+        (normalize(o.productId) === needle || normalize(o.productName) === needle)
     ) || null;
 }
 

@@ -8,6 +8,7 @@ const {
   GatewayIntentBits
 } = require('discord.js');
 const { handleTicketComponent } = require('./utils/ticket-system');
+const { handleNitradaComponent } = require('./utils/nitrada-panel');
 
 const required = ['DISCORD_BOT_TOKEN', 'DISCORD_CLIENT_ID'];
 const missing = required.filter((key) => !process.env[key]);
@@ -47,20 +48,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
       const handledTicket = await handleTicketComponent(interaction);
       if (handledTicket) return;
 
-      if (
-        interaction.isButton() &&
-        interaction.customId === 'nitrada_ver_opcoes'
-      ) {
-        await interaction.reply({
-          content: [
-            '**Nitrada • opções disponíveis**',
-            '',
-            'Consulte as opções cadastradas no catálogo.',
-            'Use `/catalogo` para ver os produtos e `/comprar` para iniciar o pedido.'
-          ].join('\n'),
-          ephemeral: true
-        });
-      }
+      const handledNitrada = await handleNitradaComponent(interaction);
+      if (handledNitrada) return;
+
       return;
     }
 

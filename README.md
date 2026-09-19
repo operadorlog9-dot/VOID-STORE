@@ -44,6 +44,19 @@ A VOID STORE pode usar o bot como loja principal e a mesma base pode evoluir par
 - `/avaliar`
 - `/painel-nitrada`
 
+## Painel Nitrada
+
+O comando `/painel-nitrada` publica um card público com o botão **Ver opções**.
+
+- O botão abre um menu privado apenas para o cliente.
+- O menu lê em tempo real produtos ativos cujo nome ou categoria contenha `Nitro` ou `Nitrada`.
+- Cada opção mostra preço e estoque.
+- Ao selecionar uma opção com estoque, o bot cria o pedido e abre um ticket privado automaticamente.
+- A confirmação continua segura e manual pela equipe com `/confirmar-pagamento`.
+- Na confirmação, o estoque baixa 1 unidade e o cargo de comprador é aplicado.
+
+Cadastre as modalidades com `/produto-adicionar` e mantenha o estoque com `/estoque-adicionar`.
+
 ## Painel de ticket
 
 ### Staff
