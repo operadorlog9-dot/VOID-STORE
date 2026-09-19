@@ -24,7 +24,25 @@ client.once(Events.ClientReady, (readyClient) => {
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
+  if (interaction.isButton()) {
+    if (interaction.customId === 'nitrada_ver_opcoes') {
+      await interaction.reply({
+        content: [
+          '**Nitrada • opções disponíveis**',
+          '',
+          '• 1 mês',
+          '• 3 meses',
+          '',
+          'Para concluir a compra, use `/comprar`.'
+        ].join('\n'),
+        ephemeral: true
+      });
+    }
+    return;
+  }
+
   if (!interaction.isChatInputCommand()) return;
+
   const command = client.commands.get(interaction.commandName);
   if (!command) return;
 
