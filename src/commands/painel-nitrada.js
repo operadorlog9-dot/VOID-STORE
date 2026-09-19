@@ -15,25 +15,34 @@ module.exports = {
 
   async execute(interaction) {
     const embed = new EmbedBuilder()
-      .setColor(0x2b2d31)
+      .setColor(0x57f287)
+      .setAuthor({ name: '⚡ Entrega Automática!' })
       .setTitle('Nitrada')
       .setDescription([
-        '⚡ **Entrega automática**',
+        '**Duração:** 1 Mês e 3 Meses completos de Nitro Gaming.',
         '',
-        '**Opções:** 1 mês e 3 meses.',
+        '**Impulsos Inclusos:** Receba 2 Boosts de Servidor já disponíveis para usar onde quiser.',
         '',
-        '**Benefícios:** consulte as opções disponíveis antes da compra.',
+        '**Acesso Total:** Consulte os detalhes da modalidade escolhida antes da compra.',
         '',
-        '**Entrega:** as instruções são enviadas após a confirmação do pedido.',
+        '**Segurança:** Confira as condições do produto e do atendimento antes de finalizar o pedido.',
         '',
-        '**A partir de R$ 2,50**',
+        '**Entrega Rápida:** As instruções são enviadas após a confirmação da compra.',
         '',
-        'Clique em **Ver opções** para conferir as variações disponíveis.'
+        '━━━━━━━━━━━━━━━━━━━━',
+        '',
+        '**A partir de** `R$ 2,50`',
+        'Clique no botão **"Ver opções"** para ver as variações disponíveis.'
       ].join('\n'))
       .setFooter({ text: 'VOID STORE' });
 
-    if (process.env.NITRADA_BANNER_URL) embed.setImage(process.env.NITRADA_BANNER_URL);
-    if (process.env.NITRADA_THUMB_URL) embed.setThumbnail(process.env.NITRADA_THUMB_URL);
+    if (process.env.NITRADA_BANNER_URL) {
+      embed.setImage(process.env.NITRADA_BANNER_URL);
+    }
+
+    if (process.env.NITRADA_THUMB_URL) {
+      embed.setThumbnail(process.env.NITRADA_THUMB_URL);
+    }
 
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
@@ -43,6 +52,9 @@ module.exports = {
         .setStyle(ButtonStyle.Secondary)
     );
 
-    await interaction.reply({ embeds: [embed], components: [row] });
+    await interaction.reply({
+      embeds: [embed],
+      components: [row]
+    });
   }
 };
