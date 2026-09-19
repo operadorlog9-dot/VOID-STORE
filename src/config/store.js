@@ -11,14 +11,14 @@ module.exports = {
   },
   channels: {
     inicio: [
-      ['boas-vindas', 'Boas-vindas da VOID STORE.'],
-      ['regras', 'Regras oficiais da VOID STORE.'],
+      ['boas-vindas', 'Boas-vindas da loja.'],
+      ['regras', 'Regras oficiais da loja.'],
       ['avisos', 'Avisos e novidades da loja.'],
       ['como-comprar', 'Passo a passo para comprar com segurança.']
     ],
     loja: [
-      ['catalogo', 'Catálogo de produtos da VOID STORE.'],
-      ['nitro', 'Produtos e informações relacionadas ao Discord Nitro.'],
+      ['catalogo', 'Catálogo de produtos da loja.'],
+      ['nitro', 'Produtos e informações relacionadas ao Discord.'],
       ['estoque', 'Disponibilidade de produtos.'],
       ['promocoes', 'Promoções vigentes.']
     ],
