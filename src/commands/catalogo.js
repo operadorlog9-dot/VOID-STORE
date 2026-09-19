@@ -32,10 +32,10 @@ module.exports = {
       .setTitle(`${state.config.brandName || interaction.guild.name} • Catálogo`)
       .setDescription('Use `/comprar produto:<nome>` para iniciar sua compra.')
       .addFields(
-        products.slice(0, 20).map((p) => ({
+        products.slice(0, 12).map((p) => ({
           name: `${p.name} • ${money(p.price)}`,
           value: [
-            p.description,
+            p.description.slice(0, 180),
             `Estoque: **${p.stock}**`,
             `Categoria: ${p.category || 'Geral'}`
           ].join('\n')
